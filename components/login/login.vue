@@ -1,20 +1,21 @@
 <template>
-  <div>
+  <div class="login_form_wrap">
     <h3 class="sign_in_txt">登陆</h3>
     <Form
       ref="LoginForm"
-      :model="formInline"
-      :rules="ruleInline">
+      :model="formLogin"
+      :rules="rules">
       <FormItem
         prop="username"
         class="login_item">
         <Input
           type="text"
-          v-model="formInline.username"
+          size="large"
+          v-model="formLogin.username"
           placeholder="Username">
-        <Icon
-          type="ios-person-outline"
-          slot="prepend"></Icon>
+        <Icon 
+          type="md-contact" 
+          slot="prefix" />
         </Input>
       </FormItem>
       <FormItem
@@ -22,15 +23,16 @@
         class="login_item">
         <Input
           type="password"
-          v-model="formInline.password"
+          size="large"
+          v-model="formLogin.password"
           placeholder="Password">
-        <Icon
-          type="ios-lock-outline"
-          slot="prepend"></Icon>
+        <Icon 
+          type="md-lock" 
+          slot="prefix" />
         </Input>
       </FormItem>
-      <FormItem>
-        <RadioGroup v-model="formInline.type">
+      <FormItem class="login_item">
+        <RadioGroup v-model="formLogin.type">
           <Radio label="Manager">管理员登录</Radio>
           <Radio label="Organization">代理商登录</Radio>
           <Radio label="Consumer">客户</Radio>
@@ -47,12 +49,12 @@
   export default {
     data() {
       return {
-        formInline: {
+        formLogin: {
           username: '',
           password: '',
           type: ''
         },
-        ruleInline: {
+        rules: {
           username: [
             { required: true, message: '请输入你的用户名', trigger: 'blur' },
             { min: 3, message: '用户名不能少于三个字符', trigger: 'blur' }

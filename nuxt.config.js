@@ -23,6 +23,7 @@ module.exports = {
   /* common css */
   css: [
     './assets/normalize.css',
+    './assets/animation.less',
     './assets/common.less'
   ],
   /*
